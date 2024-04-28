@@ -28,15 +28,17 @@
 
     pip install -r requirements.txt
 
+### Downloading the kitti dataset
+
+[Dataset Link]()
+
 ### Running the code
 
 ### Results
 
-    <!-- Add a google drive link -->
+[Output Drive](https://drive.google.com/file/d/1XyQZn0BGw1ZyoU4V86Vldm2tMJZtrzZG/view?usp=sharing)
 
 ## Collaborators
-
-<!-- Add links to github accounts -->
 
     Devyani Gorkar B20ME027
     Ayush Abrol B20AI052

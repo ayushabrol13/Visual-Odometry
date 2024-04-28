@@ -218,3 +218,69 @@ def save_trajectory_gif(trajectory, ground_truth):
 
     # Save frames as GIF
     imageio.mimsave('outputs/stereo/trajectory.gif', gif_images)
+
+def main():
+    poses = pd.read_csv('kitti/poses/00.txt', delimiter=' ', header=None)
+    ground_truth = np.zeros((len(poses), 3, 4))
+    for i in range(len(poses)):
+        ground_truth[i] = np.array(poses.iloc[i]).reshape((3, 4))
+
+    left_img_files = os.listdir('kitti/00/image_0') 
+    right_img_files =  os.listdir('kitti/00/image_1') 
+
+    with open('kitti/00/calib.txt', 'r') as file:
+        lines = file.readlines()
+
+    for line in lines:
+        if line.startswith('P0:'):
+            values = line.split(':')[1].strip().split()
+            P = np.array([float(value) for value in values]).reshape(3, 4)
+            break
+
+    k_int = np.array([[718.856, 0.   , 607.1928],
+                  [0.   , 718.856, 185.2157],
+                  [0.    , 0.     , 1.    ]])
+
+    P = np.array([[718.85, 0.0, 607.19, 0], 
+                [0.0, 718.85, 185.21, 0],
+                [0.0, 0.0, 1.0, 0]])
+    
+    kitti_data_dir = 'kitti'
+    img_files = os.listdir('kitti/00/image_0')
+
+    folder_path = "kitti/00/image_0"
+
+    image_files = sorted([os.path.join(folder_path, file) for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png'))])
+    num_images = min(100, len(image_files))
+
+    images = []
+    for i in range(num_images):
+        image = imageio.imread(image_files[i])
+        images.append(image)
+    gif_path = "outputs/stereo/kitti_output.gif"
+
+    img_left_path = os.path.join('kitti/00/image_0', left_img_files[0])
+    img_left = cv2.imread(img_left_path, 0)
+    right_img_files =  os.listdir('kitti/00/image_1') 
+    img_right = os.path.join('kitti/00/image_1', right_img_files[0])
+    img_right = cv2.imread(img_right, 0)
+
+    calib = pd.read_csv('kitti/' + 'calib.txt', delimiter=' ', header=None, index_col=0)
+    P0 = np.array(calib.loc['P0:']).reshape((3,4))
+    P1 = np.array(calib.loc['P1:']).reshape((3,4))
+    k_left, r_left, t_left = decompose_projection_matrix(P0)
+    k_right, r_right, t_right = decompose_projection_matrix(P1)
+
+    print("P0 =", P0, "\n")
+    print("P1 =", P1)
+
+    stereo_trajectory = stereo_vo_pipeline(left_img_files,right_img_files, P0, P1)
+
+    save_trajectory_gif(stereo_trajectory, ground_truth)
+          
+    plot(stereo_trajectory, ground_truth)
+
+    print("Error for StereoVisualOdometry:", calculate_error(stereo_trajectory, ground_truth))
+
+if __name__ == '__main__':
+    main()
