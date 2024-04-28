@@ -69,6 +69,14 @@ To run the complete code, run through the cells of ipynb notebook `CV_VO.ipynb`
 
 ![image](./outputs/stereo/output.png)
 
+## Project Demo Video
+
+[Video Link](https://drive.google.com/file/d/1e0dL7yhV1OdzmVOEGxY5rJgAml2aKGdA/view?usp=drive_link)
+
+## Code Inferencing Video
+
+[Video Link](https://drive.google.com/file/d/1i7hOVp2kKO16eKng4IyJfpgktpq7tjEH/view?usp=drive_link)
+
 ## Collaborators
 
     Devyani Gorkar B20ME027
