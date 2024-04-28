@@ -4,6 +4,11 @@
 
 ### Vision-based odometry allows a vehicle to localize itself robustly by using only a stream of images captured by a camera attached to the vehicle. Idea behind visual odometry is to track distinctive features in consecutive images and use the displacement of these features to calculate the camera or robot's motion relative to its surroundings.
 
+## Dataset
+
+The dataset used is KITTI dataset.
+[Dataset Link](https://drive.google.com/drive/folders/103QjSUZ5UyEwjXnV2Zo2xKfF8T-J_9jL?usp=sharing)
+
 ## How to run the code
 
 ### Cloning the repo
