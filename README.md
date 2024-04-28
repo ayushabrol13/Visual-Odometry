@@ -32,7 +32,21 @@
 
 [Dataset Link]()
 
-### Running the code
+### Running the Monocular Visual Odometry
+
+    python3 monoVisualOdometry.py
+
+### Running the Feature Tracking
+
+    python3 featureTracking.py
+
+### Running the Stereo Visual Odometry
+
+    python3 stereoVisualOdometry.py
+
+### Complete Code
+
+To run the complete code, run through the cells of ipynb notebook `CV_VO.ipynb`
 
 ### Results
 

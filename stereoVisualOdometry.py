@@ -220,6 +220,8 @@ def save_trajectory_gif(trajectory, ground_truth):
     imageio.mimsave('outputs/stereo/trajectory.gif', gif_images)
 
 def main():
+    os.makedirs('outputs', exist_ok=True)
+    os.makedirs('outputs/stereo', exist_ok=True)
     poses = pd.read_csv('kitti/poses/00.txt', delimiter=' ', header=None)
     ground_truth = np.zeros((len(poses), 3, 4))
     for i in range(len(poses)):

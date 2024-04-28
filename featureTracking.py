@@ -201,7 +201,8 @@ class VisualOdometryTracking():
         imageio.mimsave('outputs/feature_tracking/trajectory.gif', gif_images)
 
 def main():
-
+    os.makedirs('outputs', exist_ok=True)
+    os.makedirs('outputs/feature_tracking', exist_ok=True)
     poses = pd.read_csv('kitti/poses/00.txt', delimiter=' ', header=None)
     ground_truth = np.zeros((len(poses), 3, 4))
     for i in range(len(poses)):
