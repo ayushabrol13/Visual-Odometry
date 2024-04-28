@@ -55,7 +55,7 @@ To run the complete code, run through the cells of ipynb notebook `CV_VO.ipynb`
 
 ### Results
 
-[Output Drive](https://drive.google.com/file/d/1XyQZn0BGw1ZyoU4V86Vldm2tMJZtrzZG/view?usp=sharing)
+[Output Drive](https://drive.google.com/drive/folders/1SzVFBnQekg8YmkzxzHSUDCo32bzh1i9i?usp=sharing)
 
 #### Monocular Visual Odometry
 
